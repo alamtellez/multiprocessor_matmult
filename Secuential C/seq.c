@@ -1,4 +1,11 @@
-/* This code calculates an approximation of PI */
+/*
+    *   Arturo Alam Tellez Villagomez
+    *   A01205569
+    *   Matrix Multiplication
+    *   Multiprocessors
+    *   Final Project
+*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "../utils/cheader.h"

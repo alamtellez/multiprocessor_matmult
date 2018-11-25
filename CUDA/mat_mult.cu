@@ -1,3 +1,11 @@
+/*
+    *   Arturo Alam Tellez Villagomez
+    *   A01205569
+    *   Matrix Multiplication
+    *   Multiprocessors
+    *   Final Project
+*/
+
 #include <stdio.h>
 #include "cuda_runtime.h"
 #include <stdlib.h>
@@ -16,7 +24,7 @@ __global__ void matMult(int *a, int *b, int *c, int filasA, int columnasB, int k
   if(row > filasA || col > columnasB) return;
   for (i = 0; i < k; ++i)
     temp += (a[row * k + i]) * (b[i * columnasB + col]);
-  c[row * i + col] = temp;
+  c[row * columnasB + col] = temp;
 
 }
 
@@ -58,11 +66,11 @@ int main(){
   // Fill matrix A
   for(int i = 0; i < filasA; i++)
     for(int j = 0; j < columnasA; j++)
-      a[i*columnasA + j] = (int)(rand() % 10);
+      a[i*columnasA + j] = (int)((rand() % 100) + 1);
   //Fill matrix B
   for(int i = 0; i < filasB; i++)
     for(int j = 0; j < columnasB; j++)
-      b[i*columnasB + j] = (int)(rand() % 10);
+      b[i*columnasB + j] = (int)((rand() % 100) + 1);
   // Allocate values in device
   cudaMalloc((void**) &dev_a, sizeA);
   cudaMalloc((void**) &dev_b, sizeB);
@@ -76,7 +84,7 @@ int main(){
   // Call function in GPU
   ms = 0;
   start_timer();
-  matMult<<<dimGrid, dimBlock>>>(dev_a, dev_b, dev_c, filasA, filasB, filasA);
+  matMult<<<dimGrid, dimBlock>>>(dev_a, dev_b, dev_c, filasA, columnasB, columnasA);
   ms = stop_timer();
   // Get the value from GPU to Host so we can print it
   cudaMemcpy(c, dev_c, sizeC, cudaMemcpyDeviceToHost);
