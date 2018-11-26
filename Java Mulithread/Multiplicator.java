@@ -1,3 +1,10 @@
+/*
+    *   Arturo Alam Tellez Villagomez
+    *   A01205569
+    *   Matrix Multiplication
+    *   Multiprocessors
+    *   Final Project
+*/
 public class Multiplicator extends Thread{
     private int[][] matA; 
     private int[][] matB;

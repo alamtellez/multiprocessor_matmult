@@ -1,3 +1,10 @@
+/*
+    *   Arturo Alam Tellez Villagomez
+    *   A01205569
+    *   Matrix Multiplication
+    *   Multiprocessors
+    *   Final Project
+*/
 import java.util.Random;
 
 public class Utils {

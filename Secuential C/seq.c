@@ -56,26 +56,23 @@ int main(int argc, char const *argv[])
             a[i][j] = (rand() % 100) + 1;
     // Display A
     int m,n;
-    printf("\nMat A\n");
-    for (m = 0; m < filasA; m++) {
-        for (n = 0; n < columnasA; n++){
-            printf("%i\t", a[m][n]);
-        }
-        printf("\n");
-    }
+    // printf("\nMat A\n");
+    // for (m = 0; m < filasA; m++) {
+    //     for (n = 0; n < columnasA; n++){
+    //         printf("%i\t", a[m][n]);
+    //     }
+    //     printf("\n");
+    // }
     for(i=0 ; i < filasB; i++)
         for (j = 0; j < columnasB; j++)
             b[i][j] = (rand() % 100) + 1;
-    printf("\nMat B\n");
-    for (m = 0; m < filasB; m++) {
-        for (n = 0; n < columnasB; n++){
-            printf("%i\t", b[m][n]);
-        }
-        printf("\n");
-    }
-    // for(i=0 ; i < filasA; i++)
-    //     for (j = 0; j< columnasA; j++)
-    //         b[i][j] = (rand() % 100) + 1;
+    // printf("\nMat B\n");
+    // for (m = 0; m < filasB; m++) {
+    //     for (n = 0; n < columnasB; n++){
+    //         printf("%i\t", b[m][n]);
+    //     }
+    //     printf("\n");
+    // }
     ms = 0;
     sum = 0;
     start_timer();
@@ -89,16 +86,19 @@ int main(int argc, char const *argv[])
         }
     }
     ms = stop_timer();
-    printf("\nMat Res\n");
-    for (m = 0; m < filasA; m++) {
-        for (n = 0; n < columnasB; n++){
-            printf("%i\t", c[m][n]);
-        }
-        printf("\n");
-    }
+    // printf("\nMat Res\n");
+    // for (m = 0; m < filasA; m++) {
+    //     for (n = 0; n < columnasB; n++){
+    //         printf("%i\t", c[m][n]);
+    //     }
+    //     printf("\n");
+    // }
 
     printf("\nTime = %lf\n", ms);
 
+    free(a);
+    free(b);
+    free(c);
 
     return 0;
 }
