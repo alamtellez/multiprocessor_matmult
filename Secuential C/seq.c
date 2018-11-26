@@ -95,7 +95,7 @@ int main(int argc, char const *argv[])
     //     printf("\n");
     // }
 
-    printf("\nTime = %lf\n", ms);
+    printf("\nTime = %lf\n", ms/1000);
 
     free(a);
     free(b);

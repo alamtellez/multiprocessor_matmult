@@ -89,30 +89,30 @@ int main(){
   // Get the value from GPU to Host so we can print it
   cudaMemcpy(c, dev_c, sizeC, cudaMemcpyDeviceToHost);
   //Print the three matrixes
-  printf("Matrix A \n");
-  for(int i = 0; i < filasA; i++){
-    for(int j = 0; j < columnasA; j++){
-      printf("%i ", a[i*columnasA + j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
-  printf("Matrix B \n");
-  for(int i = 0; i < filasB; i++){
-    for(int j = 0; j < columnasB; j++){
-      printf("%i ", b[i*columnasB + j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
-  printf("Matrix C (Result) \n");
-  for(int i = 0; i < filasA; i++){
-    for(int j = 0; j < columnasB; j++){
-      printf("%i \t", c[i*columnasB + j]);
-    }
-    printf("\n");
-  }
-  printf("\n");
+  // printf("Matrix A \n");
+  // for(int i = 0; i < filasA; i++){
+  //   for(int j = 0; j < columnasA; j++){
+  //     printf("%i ", a[i*columnasA + j]);
+  //   }
+  //   printf("\n");
+  // }
+  // printf("\n");
+  // printf("Matrix B \n");
+  // for(int i = 0; i < filasB; i++){
+  //   for(int j = 0; j < columnasB; j++){
+  //     printf("%i ", b[i*columnasB + j]);
+  //   }
+  //   printf("\n");
+  // }
+  // printf("\n");
+  // printf("Matrix C (Result) \n");
+  // for(int i = 0; i < filasA; i++){
+  //   for(int j = 0; j < columnasB; j++){
+  //     printf("%i \t", c[i*columnasB + j]);
+  //   }
+  //   printf("\n");
+  // }
+  // printf("\n");
 
   printf("Time = %lf\n", ms);
   cudaFree(dev_a);

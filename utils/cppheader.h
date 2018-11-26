@@ -42,31 +42,15 @@ public:
     }
 };
 
-void random_array(int *array, int size) {
-	int i;
+void display_matrix(const char *text, int **mat, int rows, int cols) {
+	int i, j;
 
-	srand(time(0));
-	for (i = 0; i < size; i++) {
-		array[i] = (rand() % 100) + 1;
+	printf("%s \n", text);
+	for (i = 0; i < rows; i++) {
+		for(j=0; j < cols; j++)
+			printf("%i\t", mat[i][j]);
+        printf("\n");
 	}
-}
-
-void fill_array(int *array, int size) {
-	int i;
-
-	for (i = 0; i < size; i++) {
-		array[i] = (i % MAX_VALUE) + 1;
-	}
-}
-
-void display_array(const char *text, int *array) {
-	int i;
-
-	printf("%s = [%4i", text, array[0]);
-	for (i = 1; i < DISPLAY; i++) {
-		printf(",%4i", array[i]);
-	}
-	printf(", ... ,]\n");
 }
 
 #endif

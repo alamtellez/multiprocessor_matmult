@@ -47,9 +47,9 @@ class ForkJoinMatMult {
         
         stopTime = System.currentTimeMillis();
         acum +=  (stopTime - startTime);
-		Utils.displayMatrix(matA, 'A');
-        Utils.displayMatrix(matB, 'B');
-        Utils.displayMatrix(matC, 'C');
+		// Utils.displayMatrix(matA, 'A');
+        // Utils.displayMatrix(matB, 'B');
+        // Utils.displayMatrix(matC, 'C');
 		System.out.printf("Time = %.5f\n", (acum / 1000));
 	}
 }
