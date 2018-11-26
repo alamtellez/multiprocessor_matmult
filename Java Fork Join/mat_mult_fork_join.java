@@ -5,39 +5,52 @@
     *   Multiprocessors
     *   Final Project
 */
-import java.util.concurrent.ForkJoinPool;
 
-public class MainExample2 {
-	private static int SIZE = 100_000_000;
+import java.util.concurrent.ForkJoinPool;
+import java.util.Scanner;
+
+class ForkJoinMatMult {
+    // Get maximum number of available threads
 	private static final int MAXTHREADS = Runtime.getRuntime().availableProcessors();
 	
 	public static void main(String args[]) {
 		ForkJoinPool pool;
 		long startTime, stopTime;
 		double acum = 0;
-		
-		int a[] = new int[SIZE];
-		Utils.fillArray(a);
-		Utils.displayArray("a", a);
-		
-		int b[] = new int[SIZE];
-		Utils.fillArray(b);
-		Utils.displayArray("b", b);
-		
-		int c[] = new int[SIZE];
+		int filasA, columnasA, filasB, columnasB,i,j,k,sum, size;
+        Scanner in = new Scanner(System.in);
+        // Ask for matrix dimensions
+        // Matrix A
+        System.out.print("Rows of matrix A: ");
+        filasA = in.nextInt();
+        // Matrix A and Bs K (similar value)
+        System.out.print("Columns of matrix A = rows matrix B: ");
+        columnasA = in.nextInt();
+        filasB = columnasA;
+        // Matrix B
+        System.out.print("Columns of matrix B: ");
+        columnasB = in.nextInt();
+        // Allocate space for matrices
+        int matA[][] = new int[filasA][columnasA]; 
+        int matB[][] = new int[filasB][columnasB]; 
+        int matC[][] = new int[filasA][columnasB];
+        size = filasA;
+        // Fill with random values
+        Utils.fillMatrix(matA);
+        Utils.fillMatrix(matB);
 		
 		acum = 0;
-		for (int j = 1; j <= Utils.N; j++) {
-			startTime = System.currentTimeMillis();
-			
-			pool = new ForkJoinPool(MAXTHREADS);
-			pool.invoke(new Example2(c, b, a, 0, SIZE));
-			
-			stopTime = System.currentTimeMillis();
-			acum +=  (stopTime - startTime);
-		}
-		
-		Utils.displayArray("c", c);
-		System.out.printf("avg time = %.5f\n", (acum / Utils.N));
+        startTime = System.currentTimeMillis();
+        
+        pool = new ForkJoinPool(MAXTHREADS);
+        pool.invoke(new MultiplicatorFJ(matA, matB, matC, 0, matA.length));
+        
+        stopTime = System.currentTimeMillis();
+        acum +=  (stopTime - startTime);
+		Utils.displayMatrix(matA, 'A');
+        Utils.displayMatrix(matB, 'B');
+        Utils.displayMatrix(matC, 'C');
+		System.out.printf("Time = %.5f\n", (acum / 1000));
 	}
 }
+
